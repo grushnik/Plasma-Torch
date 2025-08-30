@@ -49,7 +49,7 @@ export default function App() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/10">
                 <img
-                  src="/chicken.jpg"   // make sure file is in /public
+                  src="/chicken.jpg"   // make sure chicken.jpg is in /public folder
                   alt="Free-range chickens on a farm"
                   className="w-full h-96 object-cover brightness-110 saturate-110"
                 />
@@ -117,9 +117,9 @@ export default function App() {
         {/* PITCH */}
         <section id="pitch" className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-3xl font-semibold">Startup Pitch</h2>
-          <div className="mt-6 aspect-video max-w-3xl mx-auto rounded-xl overflow-hidden border border-white/10">
+          <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
             <iframe
-              className="w-full h-[300px]"
+              className="w-full h-full"
               src="https://www.youtube.com/embed/vEa7KJBTRAw"
               title="N2Bio pitch"
               frameBorder={0}
@@ -132,9 +132,9 @@ export default function App() {
         {/* DEMO VIDEO */}
         <section id="demo" className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-3xl font-semibold">Demo of Pilot Plant</h2>
-          <div className="mt-6 aspect-video max-w-3xl mx-auto rounded-xl overflow-hidden border border-white/10">
+          <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
             <iframe
-              className="w-full h-[300px]"
+              className="w-full h-full"
               src="https://www.youtube.com/embed/4OhJHVxUD5k"
               title="Pilot Plant Demo"
               frameBorder={0}
