@@ -49,7 +49,7 @@ export default function App() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/10">
                 <img
-                  src="/chicken.jpg"   // make sure chicken.jpg is in /public folder
+                  src="chicken.jpg"   // <-- relative path; file at /public/chicken.jpg
                   alt="Free-range chickens on a farm"
                   className="w-full h-96 object-cover brightness-110 saturate-110"
                 />
