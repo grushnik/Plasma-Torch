@@ -26,17 +26,15 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies (allow lockfile updates)
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+          npm install --no-audit --no-fund
+          # Ensure required packages exist even if package.json was missing them before
           npm install -D vite @vitejs/plugin-react
           npm install react react-dom
+          npx vite --version
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
       - name: Upload artifact
