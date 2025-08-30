@@ -28,4 +28,11 @@
     "tailwindcss": "^4.1.12",
     "vite": "^7.1.2"
   }
+  {
+  "scripts": {
+    "build": "vite build",
+    "deploy:docs": "rm -rf docs && cp -R dist docs"
+  }
+}
+
 }
