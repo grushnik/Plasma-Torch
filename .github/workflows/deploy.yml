@@ -26,10 +26,17 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install deps
-        run: npm ci || npm i
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+          npm install -D vite @vitejs/plugin-react
+          npm install react react-dom
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
       - name: Upload artifact
