@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function App() {
+  // Ensure public assets resolve correctly under GitHub Pages base (/Website/)
+  const chickenSrc = new URL("chicken.jpg", import.meta.env.BASE_URL).toString();
+
   return (
     <div className="min-h-screen w-full bg-[#5b57a3] text-white font-sans flex flex-col">
       {/* HEADER */}
@@ -49,7 +52,7 @@ export default function App() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/10">
                 <img
-                  src="chicken.jpg"   // <-- relative path; file at /public/chicken.jpg
+                  src={chickenSrc}   // resolves to /Website/chicken.jpg on Pages
                   alt="Free-range chickens on a farm"
                   className="w-full h-96 object-cover brightness-110 saturate-110"
                 />
