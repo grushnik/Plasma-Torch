@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/index.css */
+@import "tailwindcss";
 
-/* Optional: small global tweaks */
+/* (optional) tiny global tweak */
 html, body, #root { height: 100%; }
