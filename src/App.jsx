@@ -8,7 +8,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <nav className="flex items-center gap-8 text-sm">
             <a href="#" className="hover:text-orange-400">Home</a>
-            <button className="hover:text-orange-400">Plasma Source Products ▾</button>
+            <button type="button" className="hover:text-orange-400">Plasma Source Products ▾</button>
             <a href="#applications" className="text-orange-400 font-medium">Applications</a>
             <a href="#instruments" className="hover:text-orange-400">Radom Instruments</a>
           </nav>
@@ -96,18 +96,18 @@ export default function App() {
             <h2 className="text-3xl font-semibold">Benefits</h2>
             <div className="mt-10 grid md:grid-cols-2 gap-8">
               <div className="rounded-xl border border-white/10 bg-white/10 p-6">
-                <h3 className="font-semibold">Reduced Emissions & Costs</h3>
+                <h3 className="font-semibold">Reduced Emissions &amp; Costs</h3>
                 <p className="mt-2 text-sm text-white/80">
                   Reduced emissions, transportation costs, and fertilizer price fluctuations.
                 </p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/10 p-6">
-                <h3 className="font-semibold">Water Reuse & Lower Emissions</h3>
+                <h3 className="font-semibold">Water Reuse &amp; Lower Emissions</h3>
                 <p className="mt-2 text-sm text-white/80">
                   Water is reused and ammonia greenhouse emissions are eliminated.
                 </p>
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/10 p-6">
+              <div className="rounded-XL border border-white/10 bg-white/10 p-6">
                 <h3 className="font-semibold">Organic Fertilizer Revenue</h3>
                 <p className="mt-2 text-sm text-white/80">
                   Organic nitrogen-rich fertilizer becomes a source of revenue.
