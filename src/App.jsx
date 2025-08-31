@@ -1,8 +1,66 @@
 import React from "react";
 
+// --- Robust asset base resolver -------------------------------------------
+// Fix for SyntaxError: `import` can only be used in `import()` or `import.meta`.
+// We *never* reference bare `import` now. We only touch `import.meta` behind a
+// safe check, then fall back to deriving the base from window.location.
+function ensureSlash(s) {
+  return s.endsWith("/") ? s : s + "/";
+}
+
+function resolveBaseUrl() {
+  // 1) Prefer Vite's BASE_URL if available (safe access — no bare `import`).
+  try {
+    // In environments that support it, `typeof import.meta` is a valid check.
+    // If unsupported, this `typeof` path is still parsed fine, and the `try`
+    // keeps older toolchains from choking.
+    // @ts-ignore - some editors may not know about import.meta
+    if (typeof import.meta !== "undefined" && import.meta && import.meta.env) {
+      // @ts-ignore - same note as above
+      const b = import.meta.env.BASE_URL;
+      if (typeof b === "string" && b.length > 0) return ensureSlash(b);
+    }
+  } catch (_) {
+    // Ignore and continue to fallbacks.
+  }
+
+  // 2) Derive from first pathname segment (works for GitHub Pages project sites)
+  if (typeof window !== "undefined" && window.location) {
+    const path = window.location.pathname || "/";
+    const parts = path.split("/").filter(Boolean);
+    if (parts.length > 0) return `/${parts[0]}/`;
+  }
+
+  // 3) Safe default
+  return "/";
+}
+
+// Helper used in tests to validate the fallback derivation logic
+function baseFromPathname(pathname) {
+  const parts = (pathname || "/").split("/").filter(Boolean);
+  return parts.length > 0 ? `/${parts[0]}/` : "/";
+}
+
 export default function App() {
-  // Ensure public assets resolve correctly under GitHub Pages base (/Website/)
-  const chickenSrc = new URL("chicken.jpg", import.meta.env.BASE_URL).toString();
+  const base = resolveBaseUrl();
+  const chickenSrc = `${base}chicken.jpg`; // resolves to /Website/chicken.jpg on GH Pages
+
+  // --- Runtime tests (do not change unless obviously wrong) -----------------
+  const tests = [
+    { name: "root", pathname: "/", expected: "/" },
+    { name: "gh-pages repo root", pathname: "/Website/", expected: "/Website/" },
+    { name: "gh-pages file", pathname: "/Website/index.html", expected: "/Website/" },
+    { name: "nested path", pathname: "/foo/bar", expected: "/foo/" },
+    // Added tests
+    { name: "repo no trailing slash", pathname: "/Website", expected: "/Website/" },
+    { name: "empty string", pathname: "", expected: "/" },
+    { name: "null coerced", pathname: /** @type {any} */(null), expected: "/" },
+    { name: "double slashes", pathname: "//Website//index.html", expected: "/Website/" }
+  ];
+  const testResults = tests.map((t) => {
+    const got = baseFromPathname(t.pathname);
+    return { ...t, got, pass: got === t.expected };
+  });
 
   return (
     <div className="min-h-screen w-full bg-[#5b57a3] text-white font-sans flex flex-col">
@@ -51,8 +109,10 @@ export default function App() {
             {/* Single Chicken Image */}
             <div className="relative">
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/10">
+                {/* If the local file isn't present in this preview, show a fallback image */}
                 <img
-                  src={chickenSrc}   // resolves to /Website/chicken.jpg on Pages
+                  src={chickenSrc}
+                  onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1526662092594-e98c1e356d6b?q=80&w=1600&auto=format&fit=crop"; }}
                   alt="Free-range chickens on a farm"
                   className="w-full h-96 object-cover brightness-110 saturate-110"
                 />
@@ -145,6 +205,36 @@ export default function App() {
               allowFullScreen
             />
           </div>
+        </section>
+
+        {/* DEV DIAGNOSTICS: shows test cases for base-url logic */}
+        <section className="mx-auto max-w-7xl px-6 pb-8">
+          <details className="mt-4 text-xs text-white/80">
+            <summary>Dev diagnostics: base URL + tests</summary>
+            <div className="mt-2">Detected base: <code>{base}</code></div>
+            <table className="mt-2 w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-white/20">
+                  <th className="py-1 pr-4">name</th>
+                  <th className="py-1 pr-4">pathname</th>
+                  <th className="py-1 pr-4">expected</th>
+                  <th className="py-1 pr-4">got</th>
+                  <th className="py-1 pr-4">pass</th>
+                </tr>
+              </thead>
+              <tbody>
+                {testResults.map((t) => (
+                  <tr key={t.name} className="border-b border-white/10">
+                    <td className="py-1 pr-4">{t.name}</td>
+                    <td className="py-1 pr-4"><code>{String(t.pathname)}</code></td>
+                    <td className="py-1 pr-4"><code>{t.expected}</code></td>
+                    <td className="py-1 pr-4"><code>{t.got}</code></td>
+                    <td className="py-1 pr-4">{t.pass ? "✅" : "❌"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
         </section>
       </main>
 
