@@ -26,12 +26,9 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies (allow lockfile updates)
+      - name: Install dependencies
         run: |
           npm install --no-audit --no-fund
-          # Ensure required packages exist even if package.json was missing them before
-          npm install -D vite @vitejs/plugin-react
-          npm install react react-dom
           npx vite --version
 
       - name: Build
