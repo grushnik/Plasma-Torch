@@ -17,7 +17,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NPM_CONFIG_PRODUCTION: "false" # ensure devDependencies (tailwind, vite) install
+      # Ensure devDependencies (vite, tailwind, plugins) are installed
+      NPM_CONFIG_PRODUCTION: "false"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,7 +33,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm install --no-audit --no-fund
-          npm ls tailwindcss || true
+          # Ensure Tailwind PostCSS plugin exists even if not listed in package.json
+          npm ls @tailwindcss/postcss --depth=0 >/dev/null 2>&1 || npm install -D @tailwindcss/postcss
+          # (Optional) If your config still uses classic tailwindcss+autoprefixer, you can force-install them too:
+          # npm ls tailwindcss --depth=0 >/dev/null 2>&1 || npm install -D tailwindcss
+          # npm ls autoprefixer --depth=0 >/dev/null 2>&1 || npm install -D autoprefixer
+          npx vite --version
 
       - name: Build
         run: npm run build
