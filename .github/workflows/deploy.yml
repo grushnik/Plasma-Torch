@@ -16,6 +16,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NPM_CONFIG_PRODUCTION: "false" # ensure devDependencies (tailwind, vite) install
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install --no-audit --no-fund
-          npx vite --version
+          npm ls tailwindcss || true
 
       - name: Build
         run: npm run build
