@@ -52,13 +52,28 @@ export default function App() {
       <header className="bg-[#5b57a3] border-b border-white/20">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <nav className="flex items-center gap-8 text-sm">
-            <a href="#" className="hover:text-orange-400">Home</a>
-            <button type="button" className="hover:text-orange-400">Plasma Source Products ▾</button>
-            <a href="#applications" className="text-orange-400 font-medium">Applications</a>
-            <a href="#instruments" className="hover:text-orange-400">Radom Instruments</a>
+            <a href="https://www.radomcorp.com/" className="hover:text-orange-400">Home</a>
+            <a
+              href="https://www.radomcorp.com/plasma-source-products"
+              className="hover:text-orange-400"
+            >
+              Plasma Source Products ▾
+            </a>
+            <a
+              href="https://www.radomcorp.com/applications"
+              className="text-orange-400 font-medium"
+            >
+              Applications
+            </a>
+            <a
+              href="https://www.radominstruments.com/"
+              className="hover:text-orange-400"
+            >
+              Radom Instruments
+            </a>
           </nav>
           <a
-            href="#contact"
+            href="https://www.radomcorp.com/request-form"
             className="px-4 py-2 rounded-lg bg-white text-[#5b57a3] font-semibold hover:bg-gray-100"
           >
             Contact Us
@@ -269,17 +284,35 @@ export default function App() {
           <div>
             <h3 className="font-semibold mb-3">Plasma Source Products</h3>
             <ul className="space-y-2 text-white/90">
-              <li>1.5 kW Altair &amp; Mira</li>
-              <li>10 kW Polaris</li>
-              <li>100 kW Sirius</li>
+              <li>
+                <a href="https://www.radomcorp.com/products/mira-altair">
+                  1.5 kW Altair &amp; Mira
+                </a>
+              </li>
+              <li>
+                <a href="https://www.radomcorp.com/products/polaris">
+                  10 kW Polaris
+                </a>
+              </li>
+              <li>
+                <a href="https://www.radomcorp.com/products/sirius">
+                  100 kW Sirius
+                </a>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-3">Explore</h3>
             <ul className="space-y-2 text-white/90">
-              <li><a href="#applications">Applications</a></li>
-              <li><a href="#instruments">Radom Instruments</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li>
+                <a href="https://www.radomcorp.com/applications">Applications</a>
+              </li>
+              <li>
+                <a href="https://www.radominstruments.com/">Radom Instruments</a>
+              </li>
+              <li>
+                <a href="https://www.radomcorp.com/request-form">Contact Us</a>
+              </li>
             </ul>
           </div>
         </div>
