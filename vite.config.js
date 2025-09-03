@@ -1,10 +1,11 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// IMPORTANT: base must match your repo name for GitHub Pages project sites
 export default defineConfig({
+  base: '/N2bio/',
   plugins: [react()],
-  // IMPORTANT for project pages: must match repo name + trailing slashes as shown
-  base: '/Website/',
   build: { outDir: 'dist' }
 })
 
