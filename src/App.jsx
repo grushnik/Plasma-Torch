@@ -76,9 +76,7 @@ export default function App() {
                 Nitrogen Fixation
               </h1>
               <p className="mt-6 text-lg text-white/90 max-w-xl">
-                Plasma-driven nitrogen fixation for decarbonized fertilizer
-                production. Modular, electrified systems enabling distributed
-                ammonia generation for poultry and crop farms.
+                Plasma-driven nitrogen fixation for decarbonized fertilizer production. Modular, electrified systems enable distributed fertilizer generation for poultry and dairy farms, with a minimal carbon footprint.
               </p>
               <div className="mt-8 flex gap-4">
                 <a
@@ -143,11 +141,151 @@ export default function App() {
           </ol>
         </section>
 
-        {/* BENEFITS, PITCH, DEMO, etc. remain unchanged */}
-        ...
+        {/* BENEFITS */}
+        <section id="applications" className="border-t border-b border-white/10 py-20 px-6">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-4xl font-semibold">Benefits</h2>
+            <div className="mt-10 grid md:grid-cols-2 gap-8 text-lg">
+              <div className="rounded-xl border border-white/10 bg-white/10 p-6">
+                <h3 className="font-semibold">Reduced Emissions &amp; Costs</h3>
+                <p className="mt-2 text-white/80">
+                  Reduced emissions, transportation costs, and fertilizer price fluctuations.
+                </p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/10 p-6">
+                <h3 className="font-semibold">Water Reuse &amp; Lower Emissions</h3>
+                <p className="mt-2 text-white/80">
+                  Water is reused and ammonia greenhouse emissions are eliminated.
+                </p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/10 p-6">
+                <h3 className="font-semibold">Organic Fertilizer Revenue</h3>
+                <p className="mt-2 text-white/80">
+                  Organic nitrogen-rich fertilizer becomes a source of revenue.
+                </p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/10 p-6">
+                <h3 className="font-semibold">Anaerobic Digesters Enabled</h3>
+                <p className="mt-2 text-white/80">
+                  Makes anaerobic digesters in poultry farms possible and economical.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PITCH */}
+        <section id="pitch" className="mx-auto max-w-7xl px-6 py-20">
+          <h2 className="text-3xl font-semibold">Startup Pitch</h2>
+          <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/vEa7KJBTRAw"
+              title="N2Bio pitch"
+              frameBorder={0}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </section>
+
+        {/* DEMO VIDEO */}
+        <section id="demo" className="mx-auto max-w-7xl px-6 py-20">
+          <h2 className="text-3xl font-semibold">Demo of Pilot Plant</h2>
+          <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/4OhJHVxUD5k"
+              title="Pilot Plant Demo"
+              frameBorder={0}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </section>
+
+        {/* DEV DIAGNOSTICS: shows test cases for base-url logic */}
+        <section className="mx-auto max-w-7xl px-6 pb-8">
+          <details className="mt-4 text-xs text-white/80">
+            <summary>Dev diagnostics: base URL + tests</summary>
+            <div className="mt-2">Detected base: <code>{base}</code></div>
+            <table className="mt-2 w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-white/20">
+                  <th className="py-1 pr-4">name</th>
+                  <th className="py-1 pr-4">pathname</th>
+                  <th className="py-1 pr-4">expected</th>
+                  <th className="py-1 pr-4">got</th>
+                  <th className="py-1 pr-4">pass</th>
+                </tr>
+              </thead>
+              <tbody>
+                {testResults.map((t) => (
+                  <tr key={t.name} className="border-b border-white/10">
+                    <td className="py-1 pr-4">{t.name}</td>
+                    <td className="py-1 pr-4"><code>{String(t.pathname)}</code></td>
+                    <td className="py-1 pr-4"><code>{t.expected}</code></td>
+                    <td className="py-1 pr-4"><code>{t.got}</code></td>
+                    <td className="py-1 pr-4">{t.pass ? "✅" : "❌"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
+        </section>
       </main>
 
-      {/* FOOTER remains unchanged */}
+      {/* FOOTER */}
+      <footer id="contact" className="bg-[#5b57a3] border-t border-white/20 py-16 px-6 text-sm">
+        <div className="mx-auto max-w-7xl grid md:grid-cols-3 gap-12">
+          <div>
+            <div className="mt-4 text-white/90 space-y-2 text-sm">
+              <p>
+                <strong>Address:</strong>
+                <br />
+                N27W23676 Paul Rd, Pewaukee, WI 53072, USA
+              </p>
+              <p>
+                <strong>Contact:</strong>
+                <br />
+                1-855-PLASMA-0 (1-855-752-7620)
+                <br />
+                inquiries@radomcorp.com
+              </p>
+            </div>
+            <div className="mt-4 flex gap-4 text-xl">
+              <a href="#" aria-label="Website">🌐</a>
+              <a href="#" aria-label="Instagram">📷</a>
+              <a href="#" aria-label="X (Twitter)">✖</a>
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="YouTube">▶</a>
+            </div>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3">Plasma Source Products</h3>
+            <ul className="space-y-2 text-white/90">
+              <li>1.5 kW Altair &amp; Mira</li>
+              <li>10 kW Polaris</li>
+              <li>100 kW Sirius</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3">Explore</h3>
+            <ul className="space-y-2 text-white/90">
+              <li><a href="#applications">Applications</a></li>
+              <li><a href="#instruments">Radom Instruments</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="mx-auto max-w-7xl mt-10 border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between text-xs text-white/70">
+          <p>© {new Date().getFullYear()} Radom Corp. All rights reserved.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
