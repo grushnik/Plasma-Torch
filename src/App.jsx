@@ -85,7 +85,7 @@ export default function App() {
                   href="#pitch"
                   className="px-5 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-orange-500 font-semibold shadow hover:opacity-95"
                 >
-                  Watch Pitch
+                  Let's talk about N2bio
                 </a>
               </div>
             </div>
@@ -101,8 +101,7 @@ export default function App() {
                 />
               </div>
               <p className="mt-3 text-sm text-white/80">
-                Integration with poultry operations: localized ammonia for
-                fertilizer loops and water treatment.
+                What do chickens and plasma reactors have in common? The future of farming.
               </p>
             </div>
           </div>
