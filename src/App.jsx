@@ -33,13 +33,13 @@ export default function App() {
 
   const tests = [
     { name: "root", pathname: "/", expected: "/" },
-    { name: "gh-pages repo root", pathname: "/Website/", expected: "/Website/" },
-    { name: "gh-pages file", pathname: "/Website/index.html", expected: "/Website/" },
+    { name: "gh-pages repo root", pathname: "/N2bio/", expected: "/N2bio/" },
+    { name: "gh-pages file", pathname: "/N2bio/index.html", expected: "/N2bio/" },
     { name: "nested path", pathname: "/foo/bar", expected: "/foo/" },
-    { name: "repo no trailing slash", pathname: "/Website", expected: "/Website/" },
+    { name: "repo no trailing slash", pathname: "/N2bio", expected: "/N2bio/" },
     { name: "empty string", pathname: "", expected: "/" },
     { name: "null coerced", pathname: /** @type {any} */ (null), expected: "/" },
-    { name: "double slashes", pathname: "//Website//index.html", expected: "/Website/" },
+    { name: "double slashes", pathname: "//N2bio//index.html", expected: "/N2bio/" },
   ];
   const testResults = tests.map((t) => {
     const got = baseFromPathname(t.pathname);
@@ -186,7 +186,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* OVERVIEW (replaces any 'pitch' wording) */}
+        {/* OVERVIEW */}
         <section id="overview" className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-3xl font-semibold">Let's talk about N2bio</h2>
           <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
