@@ -273,12 +273,53 @@ export default function App() {
                 inquiries@radomcorp.com
               </p>
             </div>
+            {/* Social links */}
             <div className="mt-4 flex gap-4 text-xl">
-              <a href="#" aria-label="Website">🌐</a>
-              <a href="#" aria-label="Instagram">📷</a>
-              <a href="#" aria-label="X (Twitter)">✖</a>
-              <a href="#" aria-label="LinkedIn">in</a>
-              <a href="#" aria-label="YouTube">▶</a>
+              <a
+                href="https://www.radomcorp.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Website"
+                title="Website — radomcorp.com"
+              >
+                🌐
+              </a>
+              <a
+                href="https://www.instagram.com/egrushnikova/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+              >
+                📷
+              </a>
+              <a
+                href="https://x.com/RadomCorpPlasma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+                title="X (Twitter)"
+              >
+                ✖
+              </a>
+              <a
+                href="https://www.linkedin.com/company/radom-corp-high-power"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                in
+              </a>
+              <a
+                href="https://www.youtube.com/@RadomCorporation"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                title="YouTube"
+              >
+                ▶
+              </a>
             </div>
           </div>
           <div>
