@@ -173,12 +173,12 @@ export default function App() {
 
         {/* OVERVIEW (replaces any 'pitch' wording) */}
         <section id="overview" className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="text-3xl font-semibold">N2Bio Overview</h2>
+          <h2 className="text-3xl font-semibold">Let's talk about N2bio</h2>
           <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/vEa7KJBTRAw"
-              title="N2Bio Overview"
+              title="Let's talk about N2bio"
               frameBorder={0}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
