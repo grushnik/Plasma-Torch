@@ -38,8 +38,8 @@ export default function App() {
     { name: "nested path", pathname: "/foo/bar", expected: "/foo/" },
     { name: "repo no trailing slash", pathname: "/Website", expected: "/Website/" },
     { name: "empty string", pathname: "", expected: "/" },
-    { name: "null coerced", pathname: /** @type {any} */(null), expected: "/" },
-    { name: "double slashes", pathname: "//Website//index.html", expected: "/Website/" }
+    { name: "null coerced", pathname: /** @type {any} */ (null), expected: "/" },
+    { name: "double slashes", pathname: "//Website//index.html", expected: "/Website/" },
   ];
   const testResults = tests.map((t) => {
     const got = baseFromPathname(t.pathname);
@@ -72,11 +72,11 @@ export default function App() {
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Nitrogen Fixation
-              </h1>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">Nitrogen Fixation</h1>
               <p className="mt-6 text-lg text-white/90 max-w-xl">
-                Plasma-driven nitrogen fixation for decarbonized fertilizer production. Modular, electrified systems enable distributed fertilizer generation for poultry and dairy farms, with a minimal carbon footprint.
+                Plasma-driven nitrogen fixation for decarbonized fertilizer production. Modular, electrified
+                systems enable distributed fertilizers generation for poultry and dairy farms, with a minimal
+                carbon footprint.
               </p>
               <div className="mt-8 flex gap-4">
                 <a
@@ -93,7 +93,10 @@ export default function App() {
               <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/10">
                 <img
                   src={chickenSrc}
-                  onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1526662092594-e98c1e356d6b?q=80&w=1600&auto=format&fit=crop"; }}
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      "https://images.unsplash.com/photo-1526662092594-e98c1e356d6b?q=80&w=1600&auto=format&fit=crop";
+                  }}
                   alt="Free-range chickens on a farm"
                   className="w-full h-96 object-cover brightness-110 saturate-110"
                 />
@@ -109,15 +112,15 @@ export default function App() {
         <section id="technology" className="mx-auto max-w-7xl px-6 py-20 border-t border-white/10">
           <h2 className="text-4xl font-semibold">Technology</h2>
           <p className="mt-6 text-lg text-white/90">
-            Our nitrogen fixation technology is built on Cerawave™ microwave plasma torches, which replace 
-            conventional copper inductors with high-purity ceramic rings to achieve exceptional efficiency 
-            and durability. Operating at 915 MHz with 100 kW magnetrons, the torches generate stable, 
-            near-atmospheric plasma inside a quartz chamber, enabling the direct conversion of nitrogen 
-            and oxygen into nitric oxide and ultimately nitric acid. This closed-loop system consumes 
-            only air, water, a small amount of argon, and electricity—eliminating the need for high-pressure, 
-            catalyst-driven methods like Haber-Bosch and Ostwald. By coupling high plasma efficiency with 
-            integrated heat recovery, the platform not only produces nitric acid for fertilizer applications 
-            but also supplies usable process heat, creating a scalable, sustainable alternative to conventional 
+            Our nitrogen fixation technology is built on Cerawave™ microwave plasma torches, which replace
+            conventional copper inductors with high-purity ceramic rings to achieve exceptional efficiency
+            and durability. Operating at 915 MHz with 100 kW magnetrons, the torches generate stable,
+            near-atmospheric plasma inside a quartz chamber, enabling the direct conversion of nitrogen
+            and oxygen into nitric oxide and ultimately nitric acid. This closed-loop system consumes
+            only air, water, a small amount of argon, and electricity—eliminating the need for high-pressure,
+            catalyst-driven methods like Haber-Bosch and Ostwald. By coupling high plasma efficiency with
+            integrated heat recovery, the platform not only produces nitric acid for fertilizer applications
+            but also supplies usable process heat, creating a scalable, sustainable alternative to conventional
             fertilizer production.
           </p>
         </section>
@@ -154,21 +157,15 @@ export default function App() {
               </div>
               <div className="rounded-xl border border-white/10 bg-white/10 p-6">
                 <h3 className="font-semibold">Water Reuse &amp; Lower Emissions</h3>
-                <p className="mt-2 text-white/80">
-                  Water is reused and ammonia greenhouse emissions are eliminated.
-                </p>
+                <p className="mt-2 text-white/80">Water is reused and ammonia greenhouse emissions are eliminated.</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/10 p-6">
                 <h3 className="font-semibold">Organic Fertilizer Revenue</h3>
-                <p className="mt-2 text-white/80">
-                  Organic nitrogen-rich fertilizer becomes a source of revenue.
-                </p>
+                <p className="mt-2 text-white/80">Organic nitrogen-rich fertilizer becomes a source of revenue.</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/10 p-6">
                 <h3 className="font-semibold">Anaerobic Digesters Enabled</h3>
-                <p className="mt-2 text-white/80">
-                  Makes anaerobic digesters in poultry farms possible and economical.
-                </p>
+                <p className="mt-2 text-white/80">Makes anaerobic digesters in poultry farms possible and economical.</p>
               </div>
             </div>
           </div>
@@ -204,11 +201,13 @@ export default function App() {
           </div>
         </section>
 
-        {/* DEV DIAGNOSTICS: shows test cases for base-url logic */}
+        {/* DEV DIAGNOSTICS */}
         <section className="mx-auto max-w-7xl px-6 pb-8">
           <details className="mt-4 text-xs text-white/80">
             <summary>Dev diagnostics: base URL + tests</summary>
-            <div className="mt-2">Detected base: <code>{base}</code></div>
+            <div className="mt-2">
+              Detected base: <code>{base}</code>
+            </div>
             <table className="mt-2 w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-white/20">
@@ -223,9 +222,15 @@ export default function App() {
                 {testResults.map((t) => (
                   <tr key={t.name} className="border-b border-white/10">
                     <td className="py-1 pr-4">{t.name}</td>
-                    <td className="py-1 pr-4"><code>{String(t.pathname)}</code></td>
-                    <td className="py-1 pr-4"><code>{t.expected}</code></td>
-                    <td className="py-1 pr-4"><code>{t.got}</code></td>
+                    <td className="py-1 pr-4">
+                      <code>{String(t.pathname)}</code>
+                    </td>
+                    <td className="py-1 pr-4">
+                      <code>{t.expected}</code>
+                    </td>
+                    <td className="py-1 pr-4">
+                      <code>{t.got}</code>
+                    </td>
                     <td className="py-1 pr-4">{t.pass ? "✅" : "❌"}</td>
                   </tr>
                 ))}
