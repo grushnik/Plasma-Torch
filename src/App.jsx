@@ -80,10 +80,10 @@ export default function App() {
               </p>
               <div className="mt-8 flex gap-4">
                 <a
-                  href="#pitch"
+                  href="#overview"
                   className="px-5 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-orange-500 font-semibold shadow hover:opacity-95"
                 >
-                  Let's talk about N2bio
+                  Watch N2Bio Overview
                 </a>
               </div>
             </div>
@@ -171,14 +171,14 @@ export default function App() {
           </div>
         </section>
 
-        {/* PITCH */}
-        <section id="pitch" className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="text-3xl font-semibold">Let's talk about N2bio</h2>
+        {/* OVERVIEW (replaces any 'pitch' wording) */}
+        <section id="overview" className="mx-auto max-w-7xl px-6 py-20">
+          <h2 className="text-3xl font-semibold">N2Bio Overview</h2>
           <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/vEa7KJBTRAw"
-              title="N2Bio pitch"
+              title="N2Bio Overview"
               frameBorder={0}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
