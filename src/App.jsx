@@ -173,7 +173,7 @@ export default function App() {
 
         {/* PITCH */}
         <section id="pitch" className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="text-3xl font-semibold">Startup Pitch</h2>
+          <h2 className="text-3xl font-semibold">Let's talk about N2bio</h2>
           <div className="mt-6 aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10">
             <iframe
               className="w-full h-full"
