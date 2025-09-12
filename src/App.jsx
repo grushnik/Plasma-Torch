@@ -101,11 +101,7 @@ export default function App() {
   // --- Assets (place your 100 kW torch photos into /public or GH Pages root)
   // Example filenames; rename to your actual assets (kept robust to BASE_URL)
   const torchImages = useMemo(
-    () => [
-      `${base}sirius_100kw_01.jpg`,
-      `${base}sirius_100kw_02.jpg`,
-      `${base}sirius_100kw_03.jpg`,
-    ],
+    () => ["Slide 1.jpg", "Slide 2.png", "Slide 3.jpg"].map((name) => `${base}${encodeURIComponent(name)}`),
     [base]
   );
 
