@@ -3,24 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>N2bio</title>
-  <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ✅ Title shown in Google results -->
-  <title>Plasma Nitrification and Plasma Gasification</title>
+    <!-- Title shown in search results and browser tab -->
+    <title>Plasma Nitrification and Plasma Gasification</title>
 
-  <!-- ✅ Meta description for SEO -->
-  <meta name="description" content="Explore advanced plasma nitrification and plasma gasification technologies. High-power plasma torches for sustainable fertilizer production, CO₂ destruction, and clean energy solutions." />
+    <!-- Meta description for Google snippet -->
+    <meta name="description" content="Explore advanced plasma nitrification and plasma gasification technologies. High-power plasma torches for sustainable fertilizer production, CO₂ destruction, and clean energy solutions." />
 
-  <!-- Optional SEO keywords -->
-  <meta name="keywords" content="Plasma Nitrification, Plasma Gasification, Plasma Torch, Sustainable Fertilizer, CO2 Destruction, Clean Energy" />
-</head>
+    <!-- Optional: keywords (minor for SEO but fine to include) -->
+    <meta name="keywords" content="Plasma Nitrification, Plasma Gasification, Plasma Torch, Sustainable Fertilizer, CO2 Destruction, Clean Energy" />
+
+    <!-- Canonical (helps avoid duplicate URLs on GitHub Pages) -->
+    <link rel="canonical" href="https://<your-username>.github.io/Plasma-Torch/" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index,follow" />
+
+    <!-- Favicon (use RELATIVE path so it works under /Plasma-Torch/) -->
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
+
+    <!-- Open Graph (nice previews when shared) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Plasma Nitrification and Plasma Gasification" />
+    <meta property="og:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
+    <meta property="og:url" content="https://<your-username>.github.io/Plasma-Torch/" />
+    <meta property="og:image" content="plasma-100kw.jpg" /> <!-- put a hero image in /public -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Plasma Nitrification and Plasma Gasification" />
+    <meta name="twitter:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
+    <meta name="twitter:image" content="plasma-100kw.jpg" />
+
+    <!-- Structured data (optional but good) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Plasma Nitrification and Plasma Gasification",
+      "url": "https://<your-username>.github.io/Plasma-Torch/",
+      "description": "Advanced plasma nitrification and plasma gasification technologies using high-power plasma torches."
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- keep root-relative path; do NOT prefix with /N2bio/ -->
+    <!-- Vite will rewrite this for production; fine for dev -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
