@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/Plasma-Torch/',   // ← repo name must match exactly (case-sensitive)
+  base: '/Plasma-Torch/',  // ✅ use new repo name
   plugins: [react()],
   build: { outDir: 'dist' }
 })
