@@ -3,6 +3,7 @@
   <head>
     <!-- Basics -->
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="en" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Browser tab + Google title -->
@@ -21,15 +22,16 @@
     <meta property="og:title" content="Plasma Nitrification and Plasma Gasification" />
     <meta property="og:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
     <meta property="og:url" content="https://grushnik.github.io/Plasma-Torch/" />
-    <meta property="og:image" content="slide-1.png" />
+    <!-- Use an absolute URL so previews work anywhere -->
+    <meta property="og:image" content="https://grushnik.github.io/Plasma-Torch/slide-1.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Plasma Nitrification and Plasma Gasification" />
     <meta name="twitter:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
-    <meta name="twitter:image" content="slide-1.png" />
+    <meta name="twitter:image" content="https://grushnik.github.io/Plasma-Torch/slide-1.png" />
 
-    <!-- Favicon must be relative -->
-    <link rel="icon" href="vite.svg" />
+    <!-- Favicon (relative path plays nicely on GitHub Pages subpaths) -->
+    <link rel="icon" href="./vite.svg" />
 
     <!-- Styles -->
     <style>
@@ -77,7 +79,7 @@
   <body>
     <header>
       <div class="brand">
-        <img src="vite.svg" alt="Logo" />
+        <img src="./vite.svg" alt="Logo" />
         <span>Plasma Nitrification &amp; Gasification</span>
       </div>
       <nav class="nav-btns">
@@ -97,7 +99,7 @@
         <a class="btn-primary" href="https://t.me/plasma_torch" target="_blank" rel="noopener">Join Telegram Channel</a>
         <a class="btn-ghost" href="https://t.me/PlasmaTorchGroup" target="_blank" rel="noopener">Open Discussion Group</a>
       </div>
-      <p class="note">Tip: Share this page with your friends”.</p>
+      <p class="note">Tip: Share this page with your friends.</p>
     </main>
 
     <section>
@@ -133,7 +135,7 @@
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <!-- Vite mounts your React app (optional) -->
+    <!-- Vite mounts your React app (optional for now) -->
     <div id="root" style="display:none"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
