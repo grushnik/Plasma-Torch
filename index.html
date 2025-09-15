@@ -36,6 +36,7 @@
       :root { --bg:#0b0f1a; --fg:#f5f7fb; --muted:#c8d0e0; --brand:#7c3aed; --brand2:#f97316; }
       * { box-sizing: border-box; }
       body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans"; background:linear-gradient(180deg,#0b0f1a 0%, #12172a 100%); color:var(--fg); }
+
       header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; max-width:1100px; margin:0 auto; }
       .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; }
       .brand img { width:28px; height:28px; }
@@ -43,24 +44,13 @@
       .btn-primary { background:linear-gradient(90deg,var(--brand),var(--brand2)); border:none; color:#fff; font-weight:600; }
       .btn-ghost { color:var(--fg); }
 
-      .hero { max-width:1100px; margin:40px auto 10px; padding:0 20px; display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
+      /* Single-column hero (slideshow removed) */
+      .hero { max-width:1100px; margin:40px auto 10px; padding:0 20px; }
       .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height:1.05; margin:0 0 12px; }
       .hero p { color: var(--muted); margin:0 0 18px; font-size: clamp(16px, 2vw, 18px); }
       .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
-      .panel { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; }
 
-      .slider { position:relative; border-radius:16px; overflow:hidden; aspect-ratio: 16 / 10; }
-      .slides { display:flex; width:300%; height:100%; transition: transform .6s ease; }
-      .slides img {
-        flex: 0 0 100%;      /* each image takes 100% width of the slider */
-        width: 100%;
-        height: 100%;        /* fill the aspect-ratio box */
-        object-fit: cover;
-        display: block;
-      }
-      .dots { display:flex; gap:8px; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); }
-      .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; }
-      .dot.active { background:#fff; }
+      .panel { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; }
 
       section { max-width:1100px; margin:26px auto; padding:0 20px; }
       .video { position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; }
@@ -69,7 +59,6 @@
       footer { max-width:1100px; margin:40px auto 30px; padding:0 20px; color:#b9c2d6; font-size:14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
       a { color:#d1d6ff; }
       .note { color:#9aa6bf; font-size:13px; }
-      @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
     </style>
 
     <!-- Structured data -->
@@ -99,39 +88,20 @@
     </header>
 
     <main class="hero">
-      <div>
-        <h1>High-Power Plasma Torches for <br/>Nitrification &amp; Gasification</h1>
-        <p>
-          Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production,
-          CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our Telegram community.
-        </p>
-        <div class="cta">
-          <a class="btn-primary" href="https://t.me/plasma_torch" target="_blank" rel="noopener">Join Telegram Channel</a>
-          <a class="btn-ghost" href="https://t.me/PlasmaTorchGroup" target="_blank" rel="noopener">Open Discussion Group</a>
-        </div>
-        <p class="note">Tip: Share this page. The title &amp; description are optimized for “Plasma Nitrification” and “Plasma Gasification”.</p>
+      <h1>High-Power Plasma Torches for <br/>Nitrification &amp; Gasification</h1>
+      <p>
+        Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production,
+        CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our Telegram community.
+      </p>
+      <div class="cta">
+        <a class="btn-primary" href="https://t.me/plasma_torch" target="_blank" rel="noopener">Join Telegram Channel</a>
+        <a class="btn-ghost" href="https://t.me/PlasmaTorchGroup" target="_blank" rel="noopener">Open Discussion Group</a>
       </div>
-
-      <!-- Image slider -->
-      <div class="panel">
-        <div class="slider" id="slider">
-          <div class="slides" id="slides">
-            <img src="slide-1.png" alt="100 kW plasma torch — photo 1" />
-            <img src="slide-2.png" alt="100 kW plasma torch — photo 2" />
-            <img src="slide-3.png" alt="100 kW plasma torch — photo 3" />
-          </div>
-          <div class="dots" id="dots">
-            <div class="dot active" data-i="0"></div>
-            <div class="dot" data-i="1"></div>
-            <div class="dot" data-i="2"></div>
-          </div>
-        </div>
-      </div>
+      <p class="note">Tip: Share this page. The title &amp; description are optimized for “Plasma Nitrification” and “Plasma Gasification”.</p>
     </main>
 
     <section>
       <h2>Process Demo</h2>
-      <!-- Your real video ID -->
       <div class="video panel">
         <iframe
           src="https://www.youtube-nocookie.com/embed/45vvmg9qPmQ"
@@ -160,30 +130,8 @@
       </span>
     </footer>
 
-    <!-- Slider JS + year -->
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
-
-      (function () {
-        const slides = document.getElementById('slides');
-        const dots = Array.from(document.querySelectorAll('#dots .dot'));
-        let i = 0, n = dots.length, timer;
-
-        function go(k) {
-          i = (k + n) % n;
-          slides.style.transform = 'translateX(' + (-100 * i) + '%)';
-          dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-        }
-        function next() { go(i + 1); }
-        function start() { timer = setInterval(next, 3500); }
-        function stop() { clearInterval(timer); }
-
-        dots.forEach(d => d.addEventListener('click', () => { stop(); go(+d.dataset.i); start(); }));
-        document.getElementById('slider').addEventListener('mouseenter', stop);
-        document.getElementById('slider').addEventListener('mouseleave', start);
-
-        start();
-      })();
     </script>
 
     <!-- Vite mounts your React app (optional) -->
