@@ -34,24 +34,57 @@
     <!-- Styles -->
     <style>
       :root{
-        --bg1:#0e1024;        /* deeper indigo */
-        --bg2:#211b3f;        /* indigo -> purple to harmonize with banner */
-        --fg:#f5f7fb;
-        --muted:#c8d0e0;
-        --brand:#7c3aed; --brand2:#f97316;
+        /* Body background tones */
+        --indigo-950:#0a0f24;
+        --indigo-900:#0f1733;
+        --indigo-800:#18224a;
+        --violet-700:#312e81;
+
+        /* Accent gradients */
+        --brand:#7c3aed;    /* violet */
+        --brand2:#f97316;   /* orange */
 
         /* Orange banner palette */
-        --orange1:#b45309;   /* dark amber */
-        --orange2:#f59e0b;   /* amber */
-        --orange3:#fb923c;   /* orange */
-        --orange4:#f97316;   /* orange-600 */
+        --orange1:#b45309;
+        --orange2:#f59e0b;
+        --orange3:#fb923c;
+        --orange4:#f97316;
+
+        --fg:#f5f7fb;
+        --muted:#c8d0e0;
       }
+
       *{box-sizing:border-box}
+      html,body{height:100%}
       body{
         margin:0;
         font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans";
-        background:linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
         color:var(--fg);
+        /* Radom-style layered “plasma” background */
+        background:
+          radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,.25), transparent 60%),
+          radial-gradient(1000px 600px at 110% 20%, rgba(63,81,181,.20), transparent 65%),
+          radial-gradient(900px 500px at -10% 80%, rgba(249,115,22,.10), transparent 70%),
+          linear-gradient(180deg, var(--indigo-950) 0%, var(--indigo-900) 35%, var(--indigo-800) 100%);
+        position:relative;
+        overflow-x:hidden;
+      }
+      /* Very subtle grain/noise overlay for texture (data-URI PNG) */
+      body::before{
+        content:"";
+        position:fixed; inset:0; pointer-events:none; z-index:-1;
+        background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+w8AAnUB3z0q4n8AAAAASUVORK5CYII=");
+        opacity:.04;
+        mix-blend-mode:overlay;
+      }
+      /* Gentle diagonal sheen sweep */
+      body::after{
+        content:"";
+        position:fixed; inset:-20% -20% -20% -20%; pointer-events:none; z-index:-2;
+        background:
+          conic-gradient(from 200deg at 70% 10%, rgba(255,255,255,.06), rgba(255,255,255,0) 25%, rgba(255,255,255,.05) 40%, rgba(255,255,255,0) 65%, rgba(255,255,255,.04) 80%, transparent 100%);
+        filter: blur(40px);
+        opacity:.6;
       }
 
       header{
@@ -71,7 +104,6 @@
       .hero{max-width:1100px; margin:40px auto 10px; padding:0 20px}
       .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.05; margin:0 0 12px}
       .hero p{color:var(--muted); margin:0 0 18px; font-size:clamp(16px,2vw,18px)}
-      .note{color:#9aa6bf; font-size:13px}
 
       .panel{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px}
       section{max-width:1100px; margin:26px auto; padding:0 20px}
@@ -84,7 +116,7 @@
       .orange-banner{
         border-radius:16px; padding:28px; color:#1b0f03;
         background:
-          radial-gradient(1000px 400px at -10% 0%, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%),
+          radial-gradient(900px 380px at -10% 0%, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%),
           linear-gradient(135deg,var(--orange1), var(--orange2) 40%, var(--orange3) 75%, var(--orange4));
         border:1px solid rgba(255,255,255,.15);
         display:flex; align-items:center; min-height:220px;
@@ -139,14 +171,13 @@
       </nav>
     </header>
 
-    <!-- HERO (buttons removed here per your request) -->
+    <!-- HERO (no extra buttons here) -->
     <main class="hero">
       <h1>High-Power Plasma Torches for <br/>Nitrification &amp; Gasification</h1>
       <p>
         Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production,
         CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our Telegram community.
       </p>
-      <p class="note">Tip: Share this page. The title &amp; description are optimized for “Plasma Nitrification” and “Plasma Gasification”.</p>
     </main>
 
     <!-- ORANGE BANNER + REQUEST FORM BUTTON -->
