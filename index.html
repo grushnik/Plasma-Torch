@@ -5,145 +5,129 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Browser tab + Google title -->
+    <!-- SEO -->
     <title>Plasma Nitrification and Plasma Gasification</title>
-
-    <!-- SEO snippet -->
     <meta name="description" content="Explore advanced plasma nitrification and plasma gasification technologies. High-power plasma torches for sustainable fertilizer production, CO₂ destruction, and clean energy solutions." />
     <meta name="keywords" content="Plasma Nitrification, Plasma Gasification, Plasma Torch, Sustainable Fertilizer, CO2 Destruction, Clean Energy" />
-
-    <!-- Canonical + robots -->
     <link rel="canonical" href="https://grushnik.github.io/Plasma-Torch/" />
     <meta name="robots" content="index,follow" />
 
-    <!-- Social previews -->
+    <!-- Social previews (swap image if you like) -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Plasma Nitrification and Plasma Gasification" />
     <meta property="og:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
     <meta property="og:url" content="https://grushnik.github.io/Plasma-Torch/" />
     <meta property="og:image" content="chicken.jpg" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Plasma Nitrification and Plasma Gasification" />
     <meta name="twitter:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
     <meta name="twitter:image" content="chicken.jpg" />
 
-    <!-- Favicon -->
     <link rel="icon" href="vite.svg" />
 
-    <!-- Styles -->
     <style>
       :root{
-        /* Body background tones */
-        --indigo-950:#0a0f24;
-        --indigo-900:#0f1733;
-        --indigo-800:#18224a;
-        --violet-700:#312e81;
-
-        /* Accent gradients */
-        --brand:#7c3aed;    /* violet */
-        --brand2:#f97316;   /* orange */
-
-        /* Orange banner palette */
-        --orange1:#b45309;
-        --orange2:#f59e0b;
-        --orange3:#fb923c;
-        --orange4:#f97316;
-
-        --fg:#f5f7fb;
-        --muted:#c8d0e0;
+        /* Violet + Orange theme (tweak if desired) */
+        --violet:#5b5aa8;        /* section / page background */
+        --violet-deep:#4f4e99;   /* cards/contrast */
+        --violet-text:#eef0ff;
+        --orange:#eab54f;        /* banner background */
+        --orange-deep:#e39f2b;   /* banner edge / hover */
+        --ink:#0e1230;
+        --muted:#d7dbf0;
+        --white:#ffffff;
+        --btn-grad-start:#7c3aed;
+        --btn-grad-end:#f97316;
       }
 
       *{box-sizing:border-box}
-      html,body{height:100%}
       body{
         margin:0;
         font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans";
-        color:var(--fg);
-        /* Radom-style layered “plasma” background */
-        background:
-          radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,.25), transparent 60%),
-          radial-gradient(1000px 600px at 110% 20%, rgba(63,81,181,.20), transparent 65%),
-          radial-gradient(900px 500px at -10% 80%, rgba(249,115,22,.10), transparent 70%),
-          linear-gradient(180deg, var(--indigo-950) 0%, var(--indigo-900) 35%, var(--indigo-800) 100%);
-        position:relative;
-        overflow-x:hidden;
-      }
-      /* Very subtle grain/noise overlay for texture (data-URI PNG) */
-      body::before{
-        content:"";
-        position:fixed; inset:0; pointer-events:none; z-index:-1;
-        background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+w8AAnUB3z0q4n8AAAAASUVORK5CYII=");
-        opacity:.04;
-        mix-blend-mode:overlay;
-      }
-      /* Gentle diagonal sheen sweep */
-      body::after{
-        content:"";
-        position:fixed; inset:-20% -20% -20% -20%; pointer-events:none; z-index:-2;
-        background:
-          conic-gradient(from 200deg at 70% 10%, rgba(255,255,255,.06), rgba(255,255,255,0) 25%, rgba(255,255,255,.05) 40%, rgba(255,255,255,0) 65%, rgba(255,255,255,.04) 80%, transparent 100%);
-        filter: blur(40px);
-        opacity:.6;
+        color:var(--violet-text);
+        background:var(--violet);
       }
 
+      /* Layout shell */
+      header, main, section, footer{max-width:1100px; margin:0 auto; padding:0 20px}
       header{
-        display:flex; align-items:center; justify-content:space-between;
-        padding:16px 20px; max-width:1100px; margin:0 auto;
+        display:flex; align-items:center; justify-content:space-between; gap:16px;
+        padding:16px 20px; color:#fff;
       }
       .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px}
       .brand img{width:28px; height:28px}
+
+      /* Header buttons */
       .nav-btns a{
-        text-decoration:none; padding:10px 14px; border-radius:12px;
-        border:1px solid rgba(255,255,255,.15); margin-left:10px; display:inline-block; color:#fff;
+        text-decoration:none; padding:10px 14px; border-radius:12px; display:inline-block;
+        color:#fff; border:1px solid rgba(255,255,255,.2);
       }
-      .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand2)); border:none; font-weight:600}
-      .btn-ghost{color:#fff}
+      .btn-primary{background:linear-gradient(90deg,var(--btn-grad-start),var(--btn-grad-end)); border:none; font-weight:600}
+      .btn-ghost{background:transparent}
 
       /* Hero */
-      .hero{max-width:1100px; margin:40px auto 10px; padding:0 20px}
-      .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.05; margin:0 0 12px}
-      .hero p{color:var(--muted); margin:0 0 18px; font-size:clamp(16px,2vw,18px)}
+      .hero{padding:40px 20px 16px}
+      .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.06; margin:0 0 12px}
+      .hero p{color:var(--muted); margin:0}
 
-      .panel{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px}
-      section{max-width:1100px; margin:26px auto; padding:0 20px}
-
-      .video{position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden}
-      .video iframe{width:100%; height:100%; display:block}
-
-      /* Orange banner + CTA card */
-      .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch}
+      /* Orange banner block */
+      .cta-grid{
+        display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;
+        padding:26px 20px;
+      }
       .orange-banner{
-        border-radius:16px; padding:28px; color:#1b0f03;
-        background:
-          radial-gradient(900px 380px at -10% 0%, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%),
-          linear-gradient(135deg,var(--orange1), var(--orange2) 40%, var(--orange3) 75%, var(--orange4));
-        border:1px solid rgba(255,255,255,.15);
+        background:linear-gradient(180deg,var(--orange),var(--orange-deep));
+        color:var(--ink);
+        border-radius:16px;
+        padding:28px;
+        box-shadow:0 10px 24px rgba(0,0,0,.15);
+        border:1px solid rgba(0,0,0,.08);
         display:flex; align-items:center; min-height:220px;
       }
-      .orange-banner h3{margin:0; font-size:clamp(22px,3.2vw,32px); line-height:1.15; letter-spacing:.2px; color:#fff}
-
+      .orange-banner h3{
+        margin:0; color:#fff; /* white headline over orange */
+        font-size:clamp(22px,3.2vw,32px); line-height:1.2; letter-spacing:.2px;
+        text-shadow:0 1px 0 rgba(0,0,0,.15);
+      }
       .form-card{
-        border-radius:16px; padding:24px;
-        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+        background:var(--violet-deep);
+        border-radius:16px; padding:24px; border:1px solid rgba(255,255,255,.12);
         display:flex; flex-direction:column; justify-content:center;
       }
-      .form-card h4{margin:0 0 12px; font-size:clamp(18px,2.2vw,22px)}
+      .form-card h4{margin:0 0 12px; color:#fff; font-size:clamp(18px,2.2vw,22px)}
+      .form-card p{margin:0 0 12px; color:var(--muted)}
       .form-button{
-        align-self:flex-start; text-decoration:none; margin-top:10px;
-        padding:12px 18px; border-radius:12px; font-weight:700; letter-spacing:.3px; color:#0b0f1a;
-        background:linear-gradient(90deg,#ffffff,#f7f8ff);
-        border:1px solid rgba(255,255,255,.35);
-        box-shadow:0 8px 22px rgba(249,115,22,.25);
-        transition:transform .12s ease, box-shadow .12s ease;
+        align-self:flex-start;
+        text-decoration:none;
+        margin-top:10px; padding:12px 18px; border-radius:12px;
+        font-weight:700; letter-spacing:.3px; color:#0b0f1a;
+        background:#fff; border:1px solid rgba(0,0,0,.08);
+        box-shadow:0 8px 22px rgba(0,0,0,.18);
+        transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
       }
-      .form-button:hover{transform:translateY(-1px); box-shadow:0 10px 26px rgba(249,115,22,.35)}
-      .badge{background:linear-gradient(90deg,var(--brand),var(--brand2)); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; margin-left:10px}
+      .form-button:hover{transform:translateY(-1px); box-shadow:0 12px 28px rgba(0,0,0,.22); background:#f7f7ff}
+      .badge{margin-left:10px; padding:4px 8px; border-radius:999px; font-size:12px; color:#fff; background:linear-gradient(90deg,var(--btn-grad-start),var(--btn-grad-end))}
 
-      footer{max-width:1100px; margin:40px auto 30px; padding:0 20px; color:#b9c2d6; font-size:14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-      a{color:#d1d6ff}
+      /* Video + info panels */
+      .panel{
+        background:var(--violet-deep);
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:16px; padding:14px; box-shadow:0 6px 18px rgba(0,0,0,.15);
+      }
+      section.block{padding:26px 20px}
+      h2{margin:0 0 12px}
 
-      @media (max-width:900px){.cta-grid{grid-template-columns:1fr}}
+      .video{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden}
+      .video iframe{width:100%; height:100%; display:block}
+
+      footer{
+        color:#e6e8ff; padding:32px 20px 36px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap
+      }
+      footer a{color:#fff}
+
+      @media (max-width:900px){
+        .cta-grid{grid-template-columns:1fr}
+      }
     </style>
 
     <!-- Structured data -->
@@ -171,13 +155,10 @@
       </nav>
     </header>
 
-    <!-- HERO (no extra buttons here) -->
+    <!-- HERO -->
     <main class="hero">
       <h1>High-Power Plasma Torches for <br/>Nitrification &amp; Gasification</h1>
-      <p>
-        Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production,
-        CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our Telegram community.
-      </p>
+      <p>Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production, CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our community.</p>
     </main>
 
     <!-- ORANGE BANNER + REQUEST FORM BUTTON -->
@@ -190,9 +171,7 @@
       </div>
       <div class="form-card">
         <h4>Please fill in your data…</h4>
-        <p class="note" style="margin:0 0 12px;">
-          We’ll follow up promptly with tailored plasma recommendations for your use case.
-        </p>
+        <p>We’ll follow up promptly with tailored plasma recommendations for your use case.</p>
         <a class="form-button" href="https://www.radomcorp.com/request-form" target="_blank" rel="noopener" aria-label="Open Radom literature request form">
           Open Request Form <span class="badge">Free consult</span>
         </a>
@@ -200,7 +179,7 @@
     </section>
 
     <!-- VIDEO -->
-    <section>
+    <section class="block">
       <h2>Process Demo</h2>
       <div class="video panel">
         <iframe
@@ -214,13 +193,11 @@
     </section>
 
     <!-- INFO -->
-    <section class="panel">
-      <h3>What is Plasma Nitrification?</h3>
-      <p>
-        Plasma nitrification uses high-energy plasma to fix atmospheric nitrogen into reactive nitrogen species,
-        enabling localized nitric acid or nitrate production for on-site fertilizer. When coupled with plasma gasification,
-        waste streams can be valorized into syngas and chemicals while reducing emissions.
-      </p>
+    <section class="block">
+      <div class="panel">
+        <h3>What is Plasma Nitrification?</h3>
+        <p>Plasma nitrification uses high-energy plasma to fix atmospheric nitrogen into reactive nitrogen species, enabling localized nitric acid or nitrate production for on-site fertilizer. When coupled with plasma gasification, waste streams can be valorized into syngas and chemicals while reducing emissions.</p>
+      </div>
     </section>
 
     <!-- FOOTER -->
