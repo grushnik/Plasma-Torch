@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://grushnik.github.io/Plasma-Torch/" />
     <meta name="robots" content="index,follow" />
 
-    <!-- Social previews (use any image you have in /public; 'chicken.jpg' is just a placeholder) -->
+    <!-- Social previews -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Plasma Nitrification and Plasma Gasification" />
     <meta property="og:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
@@ -28,109 +28,90 @@
     <meta name="twitter:description" content="High-power plasma torches for fertilizer production, CO₂ destruction, and clean energy." />
     <meta name="twitter:image" content="chicken.jpg" />
 
-    <!-- Favicon must be relative -->
+    <!-- Favicon -->
     <link rel="icon" href="vite.svg" />
 
     <!-- Styles -->
     <style>
-      :root {
-        --bg:#0b0f1a; --fg:#f5f7fb; --muted:#c8d0e0;
+      :root{
+        --bg1:#0e1024;        /* deeper indigo */
+        --bg2:#211b3f;        /* indigo -> purple to harmonize with banner */
+        --fg:#f5f7fb;
+        --muted:#c8d0e0;
         --brand:#7c3aed; --brand2:#f97316;
-        --purple1:#4c1d95; --purple2:#7c3aed; --purple3:#a78bfa;
+
+        /* Orange banner palette */
+        --orange1:#b45309;   /* dark amber */
+        --orange2:#f59e0b;   /* amber */
+        --orange3:#fb923c;   /* orange */
+        --orange4:#f97316;   /* orange-600 */
       }
-      * { box-sizing: border-box; }
-      body {
+      *{box-sizing:border-box}
+      body{
         margin:0;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
-        background:linear-gradient(180deg,#0b0f1a 0%, #12172a 100%);
+        font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans";
+        background:linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
         color:var(--fg);
       }
 
-      header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; max-width:1100px; margin:0 auto; }
-      .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; }
-      .brand img { width:28px; height:28px; }
-      .nav-btns a { text-decoration:none; padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15); margin-left:10px; display:inline-block; }
-      .btn-primary { background:linear-gradient(90deg,var(--brand),var(--brand2)); border:none; color:#fff; font-weight:600; }
-      .btn-ghost { color:#fff; }
+      header{
+        display:flex; align-items:center; justify-content:space-between;
+        padding:16px 20px; max-width:1100px; margin:0 auto;
+      }
+      .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px}
+      .brand img{width:28px; height:28px}
+      .nav-btns a{
+        text-decoration:none; padding:10px 14px; border-radius:12px;
+        border:1px solid rgba(255,255,255,.15); margin-left:10px; display:inline-block; color:#fff;
+      }
+      .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand2)); border:none; font-weight:600}
+      .btn-ghost{color:#fff}
 
       /* Hero */
-      .hero { max-width:1100px; margin:40px auto 10px; padding:0 20px; }
-      .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height:1.05; margin:0 0 12px; }
-      .hero p { color: var(--muted); margin:0 0 18px; font-size: clamp(16px, 2vw, 18px); }
-      .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+      .hero{max-width:1100px; margin:40px auto 10px; padding:0 20px}
+      .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.05; margin:0 0 12px}
+      .hero p{color:var(--muted); margin:0 0 18px; font-size:clamp(16px,2vw,18px)}
+      .note{color:#9aa6bf; font-size:13px}
 
-      .panel { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; }
+      .panel{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px}
+      section{max-width:1100px; margin:26px auto; padding:0 20px}
 
-      section { max-width:1100px; margin:26px auto; padding:0 20px; }
-      .video { position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; }
-      .video iframe { width:100%; height:100%; display:block; }
+      .video{position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden}
+      .video iframe{width:100%; height:100%; display:block}
 
-      /* NEW: Purple banner + form CTA */
-      .cta-grid {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        gap:24px;
-        align-items:stretch;
-      }
-      .purple-banner {
-        border-radius:16px;
-        padding:28px;
+      /* Orange banner + CTA card */
+      .cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch}
+      .orange-banner{
+        border-radius:16px; padding:28px; color:#1b0f03;
         background:
-          radial-gradient(1200px 600px at -10% 10%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 60%),
-          linear-gradient(135deg, var(--purple1), var(--purple2) 55%, var(--purple3));
-        color:#fff;
-        border:1px solid rgba(255,255,255,.12);
-        display:flex;
-        align-items:center;
-        min-height:240px;
+          radial-gradient(1000px 400px at -10% 0%, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%),
+          linear-gradient(135deg,var(--orange1), var(--orange2) 40%, var(--orange3) 75%, var(--orange4));
+        border:1px solid rgba(255,255,255,.15);
+        display:flex; align-items:center; min-height:220px;
       }
-      .purple-banner h3 {
-        margin:0;
-        font-size: clamp(22px, 3.2vw, 32px);
-        line-height:1.15;
-        letter-spacing:.2px;
+      .orange-banner h3{margin:0; font-size:clamp(22px,3.2vw,32px); line-height:1.15; letter-spacing:.2px; color:#fff}
+
+      .form-card{
+        border-radius:16px; padding:24px;
+        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+        display:flex; flex-direction:column; justify-content:center;
       }
-      .form-card {
-        border-radius:16px;
-        padding:24px;
-        background: rgba(255,255,255,.04);
-        border:1px solid rgba(255,255,255,.08);
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-      }
-      .form-card h4 { margin:0 0 12px; font-size: clamp(18px, 2.2vw, 22px); }
-      .form-button {
-        align-self:flex-start;
-        text-decoration:none;
-        margin-top:10px;
-        padding:12px 18px;
-        border-radius:12px;
-        font-weight:700;
-        letter-spacing:.3px;
-        color:#0b0f1a;
-        background:
-          linear-gradient(90deg,#ffffff,#e9e9ff);
+      .form-card h4{margin:0 0 12px; font-size:clamp(18px,2.2vw,22px)}
+      .form-button{
+        align-self:flex-start; text-decoration:none; margin-top:10px;
+        padding:12px 18px; border-radius:12px; font-weight:700; letter-spacing:.3px; color:#0b0f1a;
+        background:linear-gradient(90deg,#ffffff,#f7f8ff);
         border:1px solid rgba(255,255,255,.35);
-        box-shadow: 0 8px 22px rgba(124,58,237,.25);
-        transition: transform .12s ease, box-shadow .12s ease;
+        box-shadow:0 8px 22px rgba(249,115,22,.25);
+        transition:transform .12s ease, box-shadow .12s ease;
       }
-      .form-button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 10px 26px rgba(124,58,237,.35);
-      }
-      .form-button .badge {
-        background:linear-gradient(90deg,var(--brand),var(--brand2));
-        color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; margin-left:10px;
-      }
+      .form-button:hover{transform:translateY(-1px); box-shadow:0 10px 26px rgba(249,115,22,.35)}
+      .badge{background:linear-gradient(90deg,var(--brand),var(--brand2)); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px; margin-left:10px}
 
-      footer { max-width:1100px; margin:40px auto 30px; padding:0 20px; color:#b9c2d6; font-size:14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-      a { color:#d1d6ff; }
-      .note { color:#9aa6bf; font-size:13px; }
+      footer{max-width:1100px; margin:40px auto 30px; padding:0 20px; color:#b9c2d6; font-size:14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+      a{color:#d1d6ff}
 
-      @media (max-width: 900px) {
-        .cta-grid { grid-template-columns: 1fr; }
-      }
+      @media (max-width:900px){.cta-grid{grid-template-columns:1fr}}
     </style>
 
     <!-- Structured data -->
@@ -154,28 +135,23 @@
       </div>
       <nav class="nav-btns">
         <a class="btn-ghost" href="https://t.me/plasma_torch" target="_blank" rel="noopener">Telegram Channel</a>
-        <!-- Replace with your actual group invite link if different -->
         <a class="btn-primary" href="https://t.me/PlasmaTorchGroup" target="_blank" rel="noopener">Community Group</a>
       </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO (buttons removed here per your request) -->
     <main class="hero">
       <h1>High-Power Plasma Torches for <br/>Nitrification &amp; Gasification</h1>
       <p>
         Demonstrated plasma nitrification and plasma gasification for sustainable fertilizer production,
         CO₂ destruction, and clean energy. Explore our 100&nbsp;kW torch, process videos, and join our Telegram community.
       </p>
-      <div class="cta">
-        <a class="btn-primary" href="https://t.me/plasma_torch" target="_blank" rel="noopener">Join Telegram Channel</a>
-        <a class="btn-ghost" href="https://t.me/PlasmaTorchGroup" target="_blank" rel="noopener">Open Discussion Group</a>
-      </div>
       <p class="note">Tip: Share this page. The title &amp; description are optimized for “Plasma Nitrification” and “Plasma Gasification”.</p>
     </main>
 
-    <!-- NEW: Purple Banner + Request Form Button -->
+    <!-- ORANGE BANNER + REQUEST FORM BUTTON -->
     <section class="cta-grid">
-      <div class="purple-banner">
+      <div class="orange-banner">
         <h3>
           TELL US ABOUT YOUR NEEDS BY COMPLETING THE REQUEST FORM, AND OUR EXPERTS WILL
           TAILOR PLASMA SOLUTIONS JUST FOR YOU — <strong>FREE 1-HOUR CONSULTATION INCLUDED.</strong>
@@ -187,8 +163,7 @@
           We’ll follow up promptly with tailored plasma recommendations for your use case.
         </p>
         <a class="form-button" href="https://www.radomcorp.com/request-form" target="_blank" rel="noopener" aria-label="Open Radom literature request form">
-          Open Request Form
-          <span class="badge">Free consult</span>
+          Open Request Form <span class="badge">Free consult</span>
         </a>
       </div>
     </section>
@@ -226,11 +201,9 @@
       </span>
     </footer>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
-    <!-- Vite mounts your React app (optional) -->
+    <!-- Vite app (optional) -->
     <div id="root" style="display:none"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
