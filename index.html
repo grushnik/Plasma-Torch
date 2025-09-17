@@ -27,17 +27,22 @@
 
     <style>
       :root{
-        /* Violet + Orange theme (tweak if desired) */
-        --violet:#5b5aa8;        /* section / page background */
-        --violet-deep:#4f4e99;   /* cards/contrast */
+        /* Violet + Orange theme */
+        --violet:#5b5aa8;
+        --violet-deep:#4f4e99;
         --violet-text:#eef0ff;
-        --orange:#eab54f;        /* banner background */
-        --orange-deep:#e39f2b;   /* banner edge / hover */
+        --orange:#eab54f;
+        --orange-deep:#e39f2b;
         --ink:#0e1230;
         --muted:#d7dbf0;
         --white:#ffffff;
         --btn-grad-start:#7c3aed;
         --btn-grad-end:#f97316;
+
+        /* Footer tweaks */
+        --footer-violet: #5b5aa8;
+        --footer-muted: #dcdff6;
+        --divider: rgba(255,255,255,.6);
       }
 
       *{box-sizing:border-box}
@@ -49,7 +54,7 @@
       }
 
       /* Layout shell */
-      header, main, section, footer{max-width:1100px; margin:0 auto; padding:0 20px}
+      header, main, section{max-width:1100px; margin:0 auto; padding:0 20px}
       header{
         display:flex; align-items:center; justify-content:space-between; gap:16px;
         padding:16px 20px; color:#fff;
@@ -85,7 +90,7 @@
         display:flex; align-items:center; min-height:220px;
       }
       .orange-banner h3{
-        margin:0; color:#fff; /* white headline over orange */
+        margin:0; color:#fff;
         font-size:clamp(22px,3.2vw,32px); line-height:1.2; letter-spacing:.2px;
         text-shadow:0 1px 0 rgba(0,0,0,.15);
       }
@@ -116,17 +121,69 @@
       }
       section.block{padding:26px 20px}
       h2{margin:0 0 12px}
-
       .video{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden}
       .video iframe{width:100%; height:100%; display:block}
 
-      footer{
-        color:#e6e8ff; padding:32px 20px 36px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap
+      /* ---------- NEW FOOTER (Radom-style) ---------- */
+      .site-footer{
+        background: var(--footer-violet);
+        color: #fff;
+        margin-top: 40px;
+        padding: 40px 20px 24px;
       }
-      footer a{color:#fff}
+      .footer-inner{max-width:1100px; margin:0 auto}
+      .footer-top{
+        display:grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 24px;
+        align-items:start;
+      }
+      .footer-brand h3{
+        margin: 0 0 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+      .footer-brand .logo-row{
+        display:flex; align-items:center; gap:10px; margin-bottom:12px;
+      }
+      .footer-brand .muted{ color: var(--footer-muted); }
+      .footer-brand a{ color:#fff; text-decoration:none }
+      .footer-brand a:hover{ text-decoration:underline }
+
+      .social{
+        display:flex; gap:12px; margin-top:10px;
+      }
+      .social a{
+        display:inline-flex; align-items:center; justify-content:center;
+        width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.12);
+        border:1px solid rgba(255,255,255,.2); color:#fff; text-decoration:none;
+      }
+      .social svg{ width:16px; height:16px }
+
+      .footer-col h4{
+        margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .6px;
+      }
+      .footer-col ul{ list-style:none; margin:0; padding:0 }
+      .footer-col li{ margin:8px 0 }
+      .footer-col a{ color:#fff; text-decoration:none }
+      .footer-col a:hover{ text-decoration:underline }
+
+      .divider{
+        height:1px; background: var(--divider);
+        margin: 18px 0 8px;
+        opacity: .6;
+      }
+      .footer-bottom{
+        display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+        color: var(--footer-muted);
+        font-size: 14px;
+      }
+      .footer-bottom a{ color:#fff; text-decoration:none }
+      .footer-bottom a:hover{ text-decoration:underline }
 
       @media (max-width:900px){
         .cta-grid{grid-template-columns:1fr}
+        .footer-top{ grid-template-columns: 1fr; }
       }
     </style>
 
@@ -196,18 +253,84 @@
     <section class="block">
       <div class="panel">
         <h3>What is Plasma Nitrification?</h3>
-        <p>Plasma nitrification uses high-energy plasma to fix atmospheric nitrogen into reactive nitrogen species, enabling localized nitric acid or nitrate production for on-site fertilizer. When coupled with plasma gasification, waste streams can be valorized into syngas and chemicals while reducing emissions.</p>
+        <p>Plasma nitrification uses high-energy plasma to fix atmospheric nitrogen into reactive nitrogen species, enabling localized nitric acid or nitrate production for on-site fertilizer.</p>
+        <h3 style="margin-top:14px;">What is Plasma Gasification?</h3>
+        <p>Plasma gasification converts organic and carbon-rich waste streams—such as biomass, plastics, or municipal solid waste—into a clean synthesis gas (syngas) primarily composed of hydrogen and carbon monoxide. Operating at very high plasma temperatures, the process ensures near-complete breakdown of waste, minimizes toxic byproducts, and enables recovery of useful energy and chemicals. This syngas can then be upgraded into fuels, fertilizers, or other valuable products, while simultaneously reducing emissions and landfill dependency.</p>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <span>© <span id="year"></span> Plasma Nitrification &amp; Gasification</span>
-      <span>
-        <a href="https://t.me/plasma_torch" target="_blank" rel="noopener">Telegram</a> ·
-        <a href="mailto:info@example.com">Contact</a>
-      </span>
+    <!-- ========= FOOTER (Radom-style) ========= -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <!-- Left brand/contacts -->
+          <div class="footer-brand">
+            <div class="logo-row">
+              <!-- Simple text logo; swap with an SVG if you have one -->
+              <h3>RADOM</h3>
+            </div>
+            <div class="muted" style="margin-bottom:10px;">
+              <div style="margin:6px 0;">Address:</div>
+              <div>N27W23676 Paul Rd, Pewaukee, WI 53072, USA</div>
+            </div>
+
+            <div class="muted" style="margin:10px 0 6px;">Contact</div>
+            <div style="margin-bottom:4px;"><a href="tel:+18557527620">1-855-PLASMA-0 (1-855-752-7620)</a></div>
+            <div><a href="mailto:inquiries@radomcorp.com">inquiries@radomcorp.com</a></div>
+
+            <div class="social">
+              <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-9h3l.5-4h-3.5V7.2c0-1 .3-1.7 1.8-1.7H17V2.2C16.7 2.1 15.7 2 14.6 2 12 2 10.2 3.6 10.2 6.6V9H7v4h3.2v9h3.3z"/></svg>
+              </a>
+              <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.6.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.7.4 1.4.5 2.6.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.5 2.6a4.3 4.3 0 0 1-2.6 2.6c-.7.3-1.4.4-2.6.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.6-.5a4.3 4.3 0 0 1-2.6-2.6c-.3-.7-.4-1.4-.5-2.6C2 15.6 2 15.2 2 12s0-3.6.1-4.9c.1-1.2.2-1.9.5-2.6.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .7-.3 1.4-.4 2.6-.5C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.5.2-1.9.4-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.2.4-.3.9-.4 1.9 0 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.5.4 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.2.9.3 1.9.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.5-.2 1.9-.4.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.2-.4.3-.9.4-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.5-.4-1.9a2.7 2.7 0 0 0-.7-1.1 2.7 2.7 0 0 0-1.1-.7c-.4-.2-.9-.3-1.9-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.3a6.7 6.7 0 1 1 0 13.4 6.7 6.7 0 0 1 0-13.4Zm0 2a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm5.4-2.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
+              </a>
+              <a href="https://x.com" aria-label="X/Twitter" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.7L9.8 14.8 4 22H1l8.3-9.5L2 2h6.8l4.6 6.4L18 2Zm-1.8 18h1.7L7 4H5.3L16.2 20Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/radom-corporation/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.9-2.2 3.9-2.2 4.2 0 5 2.8 5 6.3V24h-4v-7.1c0-1.7 0-3.9-2.4-3.9s-2.7 1.9-2.7 3.8V24h-4V8z"/></svg>
+              </a>
+              <a href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.7-.8-1.5-.8-1.8-.9C18 2.7 12 2.7 12 2.7h0s-6 0-8.9.3c-.3 0-1.1.1-1.8.9C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.7.8 1.7.7 2.1.8 1.5.1 6.6.3 8.6.3h.2c2 0 7.1-.2 8.6-.3.4-.1 1.4 0 2.1-.8.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.8 14.7V7.6l6.1 3.6-6.1 3.5z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Middle column: Plasma Source Products -->
+          <div class="footer-col">
+            <h4>Plasma Source<br/>Products</h4>
+            <ul>
+              <li><a href="#" target="_blank" rel="noopener">1.5 kW Altair &amp; Mira</a></li>
+              <li><a href="#" target="_blank" rel="noopener">10 kW Polaris</a></li>
+              <li><a href="#" target="_blank" rel="noopener">100 kW Sirius</a></li>
+            </ul>
+          </div>
+
+          <!-- Right column: other site sections -->
+          <div class="footer-col">
+            <h4>Applications</h4>
+            <ul>
+              <li><a href="#" target="_blank" rel="noopener">Technology</a></li>
+              <li><a href="#" target="_blank" rel="noopener">Radom Instruments</a></li>
+              <li><a href="https://www.radomcorp.com/contact" target="_blank" rel="noopener">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Radom Corp. All rights reserved.</div>
+          <div>
+            <a href="https://www.radomcorp.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="https://www.radomcorp.com/terms" target="_blank" rel="noopener">Terms of Service</a>
+          </div>
+        </div>
+      </div>
     </footer>
+    <!-- ========= /FOOTER ========= -->
 
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
